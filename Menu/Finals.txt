@@ -6,3 +6,53 @@ Camino n° 2:
 
 
 
+'''
+Proyecto final: "Alicia en el Pais de las Encrucijadas"
+Materia: Laboratorio de Computacion I
+Profesores:
+            Balmaceda, Javier
+            Coppo, Ricardo
+Autores:
+        Alvarez, Marcia Belen
+        D'Annunzio, Stefano 
+'''
+import tkinter
+from tkinter.ttk import LabelFrame
+from turtle import bgpic
+from PIL import ImageTk, Image
+
+#Creación de la ventana raiz y asignación propiedades.
+window = tkinter.Tk()
+window.title("Alicia en el Pais de las Encrucijadas")
+window.geometry("720x565")
+
+#window.columnconfigure(0, weight=1)
+
+#window.iconbitmap() <- Agregar iconito a la ventana
+
+#Creación pantalla principal---------------------------------------------------------------
+welcome_screen = LabelFrame(window, width=712, height=540)
+welcome_screen.place(x=0, y=0, relheight=1, relwidth=1)
+
+welcome_screen_image = ImageTk.PhotoImage(Image.open("Images/home_screen.png"))
+canvas_welcome_image = tkinter.Canvas(welcome_screen, width = 712, height=540, )
+canvas_welcome_image.pack(fill="both", expand=True)
+
+canvas_welcome_image.create_image(0,0, image=welcome_screen_image, anchor="nw")
+
+
+#label_welcome_image = tkinter.Label(welcome_screen, image=welcome_screen_image)
+#label_welcome_image.place(x=0, y=0, relheight=1, relwidth=1)
+#label_welcome_image.grid(row=0, column=0)
+
+#----------Boton---------------------------------------------------------------------------- 
+start_button = tkinter.Button(welcome_screen, text = "Comenzar", font=("Gabriola",20), padx= 150, pady=0)
+start_button_window = canvas_welcome_image.create_window(150,430, anchor="nw", window=start_button)
+#start_button.pack(pady=260)
+
+
+#name_box = tkinter.Entry(window, font = "Helvetica 15")
+#name_box.pack()
+
+
+window.mainloop()
