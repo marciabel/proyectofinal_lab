@@ -8,6 +8,7 @@ Autores:
         Alvarez, Marcia Belen
         D'Annunzio, Stefano 
 '''
+
 #Import de Librerias y Modulos
 import tkinter
 from tkinter.font import BOLD
@@ -33,7 +34,7 @@ def welcome():
         start_button_window = canvas_welcome_image.create_window(100,430, anchor="nw", window=start_button)
 
         #----------Boton Instrucciones-------------------------------------------------------------------------------------------------------
-        howto_button = tkinter.Button(welcome_screen, text = "Instrucciones", font=("Gabriola",15,"bold"), padx= 75, command = open_how_to, )
+        howto_button = tkinter.Button(welcome_screen, text = "Instrucciones", font=("Gabriola",15,"bold"), padx= 75, command = open_how_to)
         howto_button_window = canvas_welcome_image.create_window(350,430, anchor="nw", window=howto_button)
 
 #Ver Instrucciones
@@ -92,6 +93,22 @@ def woods():
         next_button = tkinter.Button(woods_screen, image=next_arrow_image, borderwidth=0, command=red_path)
         next_button_window = canvas_woods_image.create_window(590,455, anchor="nw", window=next_button)
 
+def woods2():
+        #Creación pantalla---------------------------------------------------------------------------
+        woods2_screen = LabelFrame(window, width=712, height=540)
+        woods2_screen.place(x=0, y=0, relheight=1, relwidth=1)
+        
+        canvas_woods2_image = tkinter.Canvas(woods2_screen, width = 712, height=540)
+        canvas_woods2_image.pack(fill="both", expand=True)
+        canvas_woods2_image.create_image(0,0, image= woods_screen_image, anchor="nw")
+
+        #Imprimir dialogo en pantalla------------------------------------------------------------
+        canvas_woods2_image.create_image(0,0, image=dialogue_image, anchor="nw")
+
+        next_button = tkinter.Button(woods2_screen, image=next_arrow_image, borderwidth=0, command=red_path)
+        next_button_window = canvas_woods2_image.create_window(590,455, anchor="nw", window=next_button)
+
+
 def red_path():
         #Creación pantalla---------------------------------------------------------------------------
         red_path_screen = LabelFrame(window, width=712, height=540)
@@ -109,7 +126,7 @@ def red_path():
         back_button_window = canvas_red_path_image.create_window(50,450, anchor="nw", window=back_button)
 
         #Boton 2  (Continuar al bosque -> Encuentro Caterpillar)-----------------------------------------------------------------------------------------
-        continue_button = tkinter.Button(red_path_screen, text = "Continuar al bosque", font=("Gabriola",18, "bold"), padx=22)
+        continue_button = tkinter.Button(red_path_screen, text = "Volver al bosque", font=("Gabriola",18, "bold"), padx=22)
         continue_button_window = canvas_red_path_image.create_window(330,450, anchor="nw", window=continue_button)
  
 #Capitulo Puerta Dorada
@@ -143,7 +160,6 @@ def check_key():
                 continue_button = tkinter.Button(golden_gate_screen, text = "Volver al bosque", font=("Gabriola",18, "bold"), padx=22, command=woods)
                 continue_button_window = canvas_golden_gate_image.create_window(270,450, anchor="nw", window=continue_button)
 
-
 '''
 #Capitulo CaterPillar
 def caterpillar():
@@ -166,21 +182,13 @@ def caterpillar():
 #Capitulo Red Queen
 '''
 
-'''----------------------------------------------------------------------------------------------'''
 #Creación de la ventana raiz y asignación propiedades.
 window = tkinter.Tk()
 window.title("Alicia en el Pais de las Encrucijadas")
 window.geometry("720x565")
 #window.iconbitmap() <- Agregar iconito a la ventana
 
-#Comienza el Juego
-welcome()
-
-#Llave dorada 
-golden_key = False
-
-
-'''Exportación de imagenes------------------------------------------------------------------------'''
+#Importación de imagenes---------------------------------------------------------------------------
 welcome_screen_image = ImageTk.PhotoImage(Image.open("Images/home_screen.png"))
 dialogue_image = ImageTk.PhotoImage(Image.open("Images/text_box.png"))
 instructions_screen_image = ImageTk.PhotoImage(Image.open("Images/instructions.png"))
@@ -190,18 +198,13 @@ red_path_screen_image = ImageTk.PhotoImage(Image.open("Images/red_path.png"))
 golden_gate_screen_image = ImageTk.PhotoImage(Image.open("Images/golden_gate.png"))
 not_golden_gate_screen_image = ImageTk.PhotoImage(Image.open("Images/not_golden_gate.png"))
 next_arrow_image = ImageTk.PhotoImage(Image.open("Images/next_arrow.png"))
-'''Exportación de imagenes------------------------------------------------------------------------'''
+#Importación de imagenes----------------------------------------------------------------------------
 
+#Comienza el Juego
+welcome()
 
-
-
-
-
-
-
-
-
-
+#Llave dorada 
+golden_key = False
 
 
 window.mainloop()
