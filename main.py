@@ -15,6 +15,27 @@ from tkinter.ttk import LabelFrame
 from turtle import bgpic
 from PIL import ImageTk, Image
 
+#Pantalla Bienvenida
+def welcome():
+        #Creación pantalla Bienvenida------------------------------------------------------------------------------------------------------
+        welcome_screen = LabelFrame(window, width=712, height=540)
+        welcome_screen.place(x=0, y=0, relheight=1, relwidth=1)
+
+        canvas_welcome_image = tkinter.Canvas(welcome_screen, width = 712, height=540, )
+        canvas_welcome_image.pack(fill="both", expand=True)
+        canvas_welcome_image.create_image(0,0, image=welcome_screen_image, anchor="nw")
+
+        #----------Texto de Bienvenida-------------------------------------------------------------------------------------------------------
+        canvas_welcome_image.create_text(356, 100, text="Alicia en el Pais de las Encrucijadas", font=("Gabriola", 40, "bold"),fill="white")
+
+        #----------Boton Comenzar------------------------------------------------------------------------------------------------------------
+        start_button = tkinter.Button(welcome_screen, text = "Comenzar", font=("Gabriola",15,"bold"), padx= 75, command = introduction)
+        start_button_window = canvas_welcome_image.create_window(100,430, anchor="nw", window=start_button)
+
+        #----------Boton Instrucciones-------------------------------------------------------------------------------------------------------
+        howto_button = tkinter.Button(welcome_screen, text = "Instrucciones", font=("Gabriola",15,"bold"), padx= 75, command = open_how_to, )
+        howto_button_window = canvas_welcome_image.create_window(350,430, anchor="nw", window=howto_button)
+
 #Ver Instrucciones
 def open_how_to():
         instructions_screen = LabelFrame(window, width=712, height=540)
@@ -55,7 +76,7 @@ def introduction():
         continue_button = tkinter.Button(introduction_screen, text = "Seguir al Conejo", font=("Gabriola",18, "bold"), padx=22, command = woods)
         continue_button_window = canvas_introduction_image.create_window(370,450, anchor="nw", window=continue_button)
 
-#Capitulo Bosque
+#Capitulo Bosque y Camino Rojo
 def woods():
         #Creación pantalla---------------------------------------------------------------------------
         woods_screen = LabelFrame(window, width=712, height=540)
@@ -65,18 +86,32 @@ def woods():
         canvas_woods_image.pack(fill="both", expand=True)
         canvas_woods_image.create_image(0,0, image= woods_screen_image, anchor="nw")
 
-        #Imprimir instrucciones en pantalla------------------------------------------------------------
+        #Imprimir dialogo en pantalla------------------------------------------------------------
         canvas_woods_image.create_image(0,0, image=dialogue_image, anchor="nw")
+
+        next_button = tkinter.Button(woods_screen, image=next_arrow_image, borderwidth=0, command=red_path)
+        next_button_window = canvas_woods_image.create_window(590,455, anchor="nw", window=next_button)
+
+def red_path():
+        #Creación pantalla---------------------------------------------------------------------------
+        red_path_screen = LabelFrame(window, width=712, height=540)
+        red_path_screen.place(x=0, y=0, relheight=1, relwidth=1)
+        
+        canvas_red_path_image = tkinter.Canvas(red_path_screen, width = 712, height=540)
+        canvas_red_path_image.pack(fill="both", expand=True)
+        canvas_red_path_image.create_image(0,0, image= red_path_screen_image, anchor="nw")
+
+        #Imprimir dialogo en pantalla------------------------------------------------------------
+        canvas_red_path_image.create_image(0,0, image=dialogue_image, anchor="nw")
         
         #Boton 1  (Seguir el camino Rojo -> Puerta Dorada)-----------------------------------------------------------------------------------------
-        back_button = tkinter.Button(woods_screen, text = "Tomar el Camino Rojo", font=("Gabriola",18, "bold"), padx=22, command = golden_gate)
-        back_button_window = canvas_woods_image.create_window(100,450, anchor="nw", window=back_button)
+        back_button = tkinter.Button(red_path_screen, text = "Tomar el Camino Rojo", font=("Gabriola",18, "bold"), padx=22, command = golden_gate)
+        back_button_window = canvas_red_path_image.create_window(50,450, anchor="nw", window=back_button)
 
         #Boton 2  (Continuar al bosque -> Encuentro Caterpillar)-----------------------------------------------------------------------------------------
-        continue_button = tkinter.Button(woods_screen, text = "Continuar al bosque", font=("Gabriola",18, "bold"), padx=22)
-        continue_button_window = canvas_woods_image.create_window(360,450, anchor="nw", window=continue_button)
-
-
+        continue_button = tkinter.Button(red_path_screen, text = "Continuar al bosque", font=("Gabriola",18, "bold"), padx=22)
+        continue_button_window = canvas_red_path_image.create_window(330,450, anchor="nw", window=continue_button)
+ 
 #Capitulo Puerta Dorada
 def golden_gate():
         #Creación pantalla---------------------------------------------------------------------------
@@ -131,47 +166,34 @@ def caterpillar():
 #Capitulo Red Queen
 '''
 
-
+'''----------------------------------------------------------------------------------------------'''
 #Creación de la ventana raiz y asignación propiedades.
 window = tkinter.Tk()
 window.title("Alicia en el Pais de las Encrucijadas")
 window.geometry("720x565")
 #window.iconbitmap() <- Agregar iconito a la ventana
 
-#Exportación de imagenes
+#Comienza el Juego
+welcome()
+
+#Llave dorada 
+golden_key = False
+
+
+'''Exportación de imagenes------------------------------------------------------------------------'''
 welcome_screen_image = ImageTk.PhotoImage(Image.open("Images/home_screen.png"))
 dialogue_image = ImageTk.PhotoImage(Image.open("Images/text_box.png"))
 instructions_screen_image = ImageTk.PhotoImage(Image.open("Images/instructions.png"))
 introduction_screen_image = ImageTk.PhotoImage(Image.open("Images/introduction.gif"))
 woods_screen_image = ImageTk.PhotoImage(Image.open("Images/woods.png"))
+red_path_screen_image = ImageTk.PhotoImage(Image.open("Images/red_path.png"))
 golden_gate_screen_image = ImageTk.PhotoImage(Image.open("Images/golden_gate.png"))
 not_golden_gate_screen_image = ImageTk.PhotoImage(Image.open("Images/not_golden_gate.png"))
-
-def welcome():
-        #Creación pantalla Bienvenida------------------------------------------------------------------------------------------------------
-        welcome_screen = LabelFrame(window, width=712, height=540)
-        welcome_screen.place(x=0, y=0, relheight=1, relwidth=1)
-
-        canvas_welcome_image = tkinter.Canvas(welcome_screen, width = 712, height=540, )
-        canvas_welcome_image.pack(fill="both", expand=True)
-        canvas_welcome_image.create_image(0,0, image=welcome_screen_image, anchor="nw")
-
-        #----------Texto de Bienvenida-------------------------------------------------------------------------------------------------------
-        canvas_welcome_image.create_text(356, 100, text="Alicia en el Pais de las Encrucijadas", font=("Gabriola", 40, "bold"),fill="white")
-
-        #----------Boton Comenzar------------------------------------------------------------------------------------------------------------
-        start_button = tkinter.Button(welcome_screen, text = "Comenzar", font=("Gabriola",15,"bold"), padx= 75, command = introduction)
-        start_button_window = canvas_welcome_image.create_window(100,430, anchor="nw", window=start_button)
-
-        #----------Boton Instrucciones-------------------------------------------------------------------------------------------------------
-        howto_button = tkinter.Button(welcome_screen, text = "Instrucciones", font=("Gabriola",15,"bold"), padx= 75, command = open_how_to, )
-        howto_button_window = canvas_welcome_image.create_window(350,430, anchor="nw", window=howto_button)
-
-welcome()
+next_arrow_image = ImageTk.PhotoImage(Image.open("Images/next_arrow.png"))
+'''Exportación de imagenes------------------------------------------------------------------------'''
 
 
-#Llave dorada 
-golden_key = False
+
 
 
 
