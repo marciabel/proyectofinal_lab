@@ -73,7 +73,6 @@ def introduction():
         introduction_string = "Oh! Quién es ese Conejo Blanco corriendo con un paraguas?\n A donde irá con tanta prisa?"
         canvas_introduction_image.create_text(350, 350, text=introduction_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
-        
         #Boton 1 (No seguir al conejo)-----------------------------------------------------------------------------------------
         back_button = tkinter.Button(introduction_screen, text = "No seguir al Conejo", font=("Gabriola",18, "bold"), padx=22, bg ="#b6e2d3", fg= "#b74153", command = lambda: ending("out"))
         back_button_window = canvas_introduction_image.create_window(130,450, anchor="nw", window=back_button)
@@ -179,7 +178,7 @@ def check_key():
                 canvas_golden_gate_image.create_text(350, 370, text=golden_gate_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
                 #Boton (Volver al bosque -> Encuentro Caterpillar)-----------------------------------------------------------------------------------------
-                continue_button = tkinter.Button(golden_gate_screen, text = "Volver al bosque", font=("Gabriola",18, "bold"), padx=22,bg ="#b6e2d3", fg= "#b74153", command=woods2("caterpillar"))
+                continue_button = tkinter.Button(golden_gate_screen, text = "Volver al bosque", font=("Gabriola",18, "bold"), padx=22,bg ="#b6e2d3", fg= "#b74153", command=lambda:woods2("caterpillar"))
                 continue_button_window = canvas_golden_gate_image.create_window(240,450, anchor="nw", window=continue_button)
         else: 
                 canvas_golden_gate_image.create_image(0,0, image= golden_gate_screen_image, anchor="nw")
@@ -190,7 +189,7 @@ def check_key():
                 canvas_golden_gate_image.create_text(350, 370, text=golden_gate_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
                 #Boton (Abrir la puerta --> Encuentro con la Reina Roja)-----------------------------------------------------------------------------------------
-                continue_button = tkinter.Button(golden_gate_screen, text = "Abrir la puerta", font=("Gabriola",18, "bold"),bg ="#b6e2d3", fg= "#b74153", padx=22, command=blackjack)
+                continue_button = tkinter.Button(golden_gate_screen, text = "Abrir la puerta", font=("Gabriola",18, "bold"),bg ="#b6e2d3", fg= "#b74153", padx=22, command=red_queen)
                 continue_button_window = canvas_golden_gate_image.create_window(270,450, anchor="nw", window=continue_button)
 
 #Capitulo CaterPillar-----------------------------------------------------------------------------------------------
@@ -393,7 +392,7 @@ def caterpillar_game():
         next_button = tkinter.Button(caterpillar1_screen, image=next_arrow_image, borderwidth=0, command=first_question)
         next_button_window = canvas_caterpillar1_image.create_window(590,455, anchor="nw", window=next_button)
 
-#Capitulo Cheshire Cat-----------------------------------------------------------------------------------------------
+#Capitulo Cheshire Cat----------------------------------------------------------------------------------------------------------------------------
 def cheshire_cat():
         #Creacion Pantalla-------------------------------------------------------------------------------------------------------
         cat_encounter_screen = LabelFrame(window, width=712, height=540)
@@ -516,7 +515,7 @@ def cheshire_cat_game():
         next_button = tkinter.Button(cheshire_cat_game_screen, image=next_arrow_image, borderwidth=0, command=riddle)
         next_button_window = canvas_cheshire_cat_game_image.create_window(590,455, anchor="nw", window=next_button)
 
-#Capitulo Sombrerero---------------------------------------------------------------------------------------------------------
+#Capitulo Sombrerero------------------------------------------------------------------------------------------------------------------------------
 def hatman():
         #Creacion Pantalla-------------------------------------------------------------------------------------------------------
         hatman_encounter_screen = LabelFrame(window, width=712, height=540)
@@ -527,102 +526,172 @@ def hatman():
         canvas_hatman_encounter_image.create_image(0,0, image= hatman_encounter_screen_image, anchor="nw")
         #Siguiente pantalla ------------------------------------------------------------------------------------------------------
         def tea_table():
-                #Construccion pantalla
-                tea_table_screen = LabelFrame(window, width=712, height=540)
-                tea_table_screen.place(x=0, y=0, relheight=1, relwidth=1)
-                
-                canvas_tea_table_image = tkinter.Canvas(tea_table_screen, width = 712, height=540)
-                canvas_tea_table_image.pack(fill="both", expand=True)
-                canvas_tea_table_image.create_image(0,0, image= tea_table_screen_image, anchor="nw")
+                canvas_hatman_encounter_image.create_image(0,0, image= tea_table_screen_image, anchor="nw")
                 
                 #Imprimir dialogo en pantalla--------------------------------------------------------------------------------------
-                canvas_tea_table_image.create_image(0,0, image=dialogue_image, anchor="nw")
-                tea_table_string = "Oh! Es un gato! Hola señor Gato! Me encuentro \nsin rumbo en este bosque buscando una Llave dorada\n¿Será que podrá ayudarme Sr. Gato?"
-                canvas_tea_table_image.create_text(370, 370, text=tea_table_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+                canvas_hatman_encounter_image.create_image(0,0, image=dialogue_image, anchor="nw")
+                tea_table_string = "♫ ♪ Feliz, feliz no cumpleaños! ♩ ♫ ♪\n ♫ ♪ Feliz, feliz no cumpleaños te dooyy ♩ a tuu ♫ ♪ !"
+                canvas_hatman_encounter_image.create_text(370, 370, text=tea_table_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
                 #Boton Siguiente---------------------------------------------------------------------------------------------
-                next_button = tkinter.Button(tea_table_screen, image=next_arrow_image, borderwidth=0, command=tea_table2)
-                next_button_window = canvas_tea_table_image.create_window(590,455, anchor="nw", window=next_button)
+                next_button = tkinter.Button(hatman_encounter_screen, image=next_arrow_image, borderwidth=0, command=tea_table2)
+                next_button_window = canvas_hatman_encounter_image.create_window(590,455, anchor="nw", window=next_button)
 
         def tea_table2():
-                #Construccion pantalla
-                tea_table2_screen = LabelFrame(window, width=712, height=540)
-                tea_table2_screen.place(x=0, y=0, relheight=1, relwidth=1)
-                
-                canvas_tea_table2_image = tkinter.Canvas(tea_table2_screen, width = 712, height=540)
-                canvas_tea_table2_image.pack(fill="both", expand=True)
-                canvas_tea_table2_image.create_image(0,0, image= hatman_screen_image, anchor="nw")
+                canvas_hatman_encounter_image.create_image(0,0, image= alice_tea_table_screen_image, anchor="nw")
                 
                 #Imprimir dialogo en pantalla--------------------------------------------------------------------------------------
-                canvas_tea_table2_image.create_image(0,0, image=dialogue_image, anchor="nw")
-                tea_table2_string = "sdaghfvsfrtghyrtegrgwhtej"
-                canvas_tea_table2_image.create_text(370, 370, text=tea_table2_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+                canvas_hatman_encounter_image.create_image(0,0, image=dialogue_image, anchor="nw")
+                tea_table2_string = "♩ ♫ ¡Que canción tan divertida! Pero, lamento haber \ninterrumpido su fiesta de cumpleaños!"
+                canvas_hatman_encounter_image.create_text(370, 370, text=tea_table2_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
                 #Boton Siguiente---------------------------------------------------------------------------------------------
-                next_button = tkinter.Button(tea_table2_screen, image=next_arrow_image, borderwidth=0, command=unbirthday)
-                next_button_window = canvas_tea_table2_image.create_window(590,455, anchor="nw", window=next_button)
+                next_button = tkinter.Button(hatman_encounter_screen, image=next_arrow_image, borderwidth=0, command=tea_table3)
+                next_button_window = canvas_hatman_encounter_image.create_window(590,455, anchor="nw", window=next_button)
 
-        #Boton Siguiente-----------------------------------------------------------------------------------------------------------
+        def tea_table3():
+                hatman_encounter_screen = LabelFrame(window, width=712, height=540)
+                hatman_encounter_screen.place(x=0, y=0, relheight=1, relwidth=1)
+                
+                canvas_hatman_encounter_image = tkinter.Canvas(hatman_encounter_screen, width = 712, height=540)
+                canvas_hatman_encounter_image.pack(fill="both", expand=True)
+
+                canvas_hatman_encounter_image.create_image(0,0, image= hatman_tea_table_screen_image, anchor="nw")
+                
+                #Imprimir dialogo en pantalla--------------------------------------------------------------------------------------
+                canvas_hatman_encounter_image.create_image(0,0, image=dialogue_image, anchor="nw")
+                tea_table2_string = "No querida! Esto no es un no cumpleaños! \n Por que festejar sólo un día de cumpleaños cuando podemos \nfestejar 364 días de no cumpleaños! ... ¿Que hay de ti?"
+                canvas_hatman_encounter_image.create_text(370, 370, text=tea_table2_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+
+                #Boton 1 (También es mi no cumpleaños!)-----------------------------------------------------------------------------------------
+                unbirthday_button = tkinter.Button(hatman_encounter_screen, text = "Hoy también es mi no cumpleaños!", font=("Gabriola",18, "bold"), padx=5, bg ="#b6e2d3", fg= "#b74153", command = unbirthday)
+                unbirthday_button_window = canvas_hatman_encounter_image.create_window(40,450, anchor="nw", window=unbirthday_button)
+
+                #Boton 2 (Hoy es mi cumpleaños!)-------------------------------------------------------------------------------------------------
+                birthday_button = tkinter.Button(hatman_encounter_screen, text = "Pero... hoy es mi cumpleaños", font=("Gabriola",18, "bold"), padx=5,bg ="#b6e2d3", fg= "#b74153", command = birthday)
+                birthday_button_window = canvas_hatman_encounter_image.create_window(400,450, anchor="nw", window=birthday_button)
+
+        def birthday():
+                canvas_hatman_encounter_image.create_image(0,0, image= hatman_tea_table_screen_image, anchor="nw")
+                
+                #Imprimir dialogo en pantalla---------------------------------------------------------------------------------------------------
+                canvas_hatman_encounter_image.create_image(0,0, image=dialogue_image, anchor="nw")
+                tea_table2_string = "Oh... bueno... esto es incomodo...\nquizás deberías volver a tu tierra a celebrar tu cumpleaños"
+                canvas_hatman_encounter_image.create_text(370, 370, text=tea_table2_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+
+                #Boton Siguiente-----------------------------------------------------------------------------------------------------------------
+                next_button = tkinter.Button(hatman_encounter_screen, image=next_arrow_image, borderwidth=0, command=lambda: ending("out"))
+                next_button_window = canvas_hatman_encounter_image.create_window(590,455, anchor="nw", window=next_button)
+
+        #Boton Siguiente hatman() (Principal)-----------------------------------------------------------------------------------------------------------
         next_button = tkinter.Button(hatman_encounter_screen, image=next_arrow_image, borderwidth=0, command=tea_table)
         next_button_window = canvas_hatman_encounter_image.create_window(590,455, anchor="nw", window=next_button)
 
 def unbirthday():
-        #Creacion Pantalla-------------------------------------------------------------------------------------------------------
+        #Creacion Pantalla--------------------------------------------------------------------------------------------------------------------
         unbirthday_screen = LabelFrame(window, width=712, height=540)
         unbirthday_screen.place(x=0, y=0, relheight=1, relwidth=1)
         
         canvas_unbirthday_image = tkinter.Canvas(unbirthday_screen, width = 712, height=540)
         canvas_unbirthday_image.pack(fill="both", expand=True)
         canvas_unbirthday_image.create_image(0,0, image= unbirthday_screen_image, anchor="nw")
+
+        #Imprimir dialogo en pantalla---------------------------------------------------------------------------------------------------------
+        canvas_unbirthday_image.create_image(0,0, image=dialogue_image, anchor="nw")
+        unbirthday_cake_string = "¡Que pequeño que es este mundo! En ese caso... \n ♫ ♪ Feliz, feliz no cumpleaños! ♩ ♫ a tuu!♪"
+        canvas_unbirthday_image.create_text(370, 370, text=unbirthday_cake_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+
         #Siguiente pantalla ------------------------------------------------------------------------------------------------------
-        def tea_table():
-                #Construccion pantalla
-                tea_table_screen = LabelFrame(window, width=712, height=540)
-                tea_table_screen.place(x=0, y=0, relheight=1, relwidth=1)
+        def unbirthday_cake():
+                #Recibe la llave ------------------------------------------------------------------------------------------------------------
+                golden_key["Golden Key"] = True
                 
-                canvas_tea_table_image = tkinter.Canvas(tea_table_screen, width = 712, height=540)
-                canvas_tea_table_image.pack(fill="both", expand=True)
-                canvas_tea_table_image.create_image(0,0, image= tea_table_screen_image, anchor="nw")
+                #Construccion pantalla ------------------------------------------------------------------------------------------------------
+                canvas_unbirthday_image.create_image(0,0, image= hatman_screen_image, anchor="nw")
                 
-                #Imprimir dialogo en pantalla--------------------------------------------------------------------------------------
-                canvas_tea_table_image.create_image(0,0, image=dialogue_image, anchor="nw")
-                tea_table_string = "♫ ♪ Feliz, feliz no cumpleaños! ♩ ♫ ♪\nsin rumbo en este bosque buscando una Llave dorada\n¿Será que podrá ayudarme Sr. Gato?"
-                canvas_tea_table_image.create_text(370, 370, text=tea_table_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+                #Imprimir dialogo en pantalla-----------------------------------------------------------------------------------------------
+                canvas_unbirthday_image.create_image(0,0, image=dialogue_image, anchor="nw")
+                tea_table2_string = "Que gran celebración! Ahora querida, vuelve por el camino rojo...\nQuizás tengas un regalo de no cumpleaños en el bolsillo! "
+                canvas_unbirthday_image.create_text(370, 370, text=tea_table2_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
-                #Boton Siguiente---------------------------------------------------------------------------------------------
-                next_button = tkinter.Button(tea_table_screen, image=next_arrow_image, borderwidth=0, command=tea_table2)
-                next_button_window = canvas_tea_table_image.create_window(590,455, anchor="nw", window=next_button)
+                #Boton Siguiente------------------------------------------------------------------------------------------------------------
+                next_button = tkinter.Button(unbirthday_screen, image=next_arrow_image, borderwidth=0, command=red_path)
+                next_button_window = canvas_unbirthday_image.create_window(590,455, anchor="nw", window=next_button)
 
-        def tea_table2():
-                #Construccion pantalla
-                tea_table2_screen = LabelFrame(window, width=712, height=540)
-                tea_table2_screen.place(x=0, y=0, relheight=1, relwidth=1)
-                
-                canvas_tea_table2_image = tkinter.Canvas(tea_table2_screen, width = 712, height=540)
-                canvas_tea_table2_image.pack(fill="both", expand=True)
-                canvas_tea_table2_image.create_image(0,0, image= hatman_screen_image, anchor="nw")
-                
-                #Imprimir dialogo en pantalla--------------------------------------------------------------------------------------
-                canvas_tea_table2_image.create_image(0,0, image=dialogue_image, anchor="nw")
-                tea_table2_string = "sdaghfvsfrtghyrtegrgwhtej"
-                canvas_tea_table2_image.create_text(370, 370, text=tea_table2_string, font=("Calibri", 17, "bold"), fill="#1b2538")
-
-                #Boton Siguiente---------------------------------------------------------------------------------------------
-                next_button = tkinter.Button(tea_table2_screen, image=next_arrow_image, borderwidth=0, command=None)
-                next_button_window = canvas_tea_table2_image.create_window(590,455, anchor="nw", window=next_button)
-
-        #Boton Siguiente-----------------------------------------------------------------------------------------------------------
-        next_button = tkinter.Button(unbirthday_screen, image=next_arrow_image, borderwidth=0, command=tea_table)
+        #Boton Siguiente (unbirthday - principal)--------------------------------------------------------------------------------------------------------------------
+        next_button = tkinter.Button(unbirthday_screen, image=next_arrow_image, borderwidth=0, command=unbirthday_cake)
         next_button_window = canvas_unbirthday_image.create_window(590,455, anchor="nw", window=next_button)
 
 #Capitulo Red Queen
-#Creacion de clase Carta (Card)        
+def red_queen():
+        #Creacion Pantalla-------------------------------------------------------------------------------------------------------
+        red_queen_screen = LabelFrame(window, width=712, height=540)
+        red_queen_screen.place(x=0, y=0, relheight=1, relwidth=1)
+        
+        canvas_red_queen_image = tkinter.Canvas(red_queen_screen, width = 712, height=540)
+        canvas_red_queen_image.pack(fill="both", expand=True)
+        canvas_red_queen_image.create_image(0,0, image= labyrinth_screen_image, anchor="nw")
+
+        #Siguiente pantalla ------------------------------------------------------------------------------------------------------
+        def queen_gate():
+                canvas_red_queen_image.create_image(0,0, image= queen_gate_screen_image, anchor="nw")
+                
+                #Imprimir dialogo en pantalla--------------------------------------------------------------------------------------
+                #canvas_red_queen_image.create_image(0,0, image=dialogue_image, anchor="nw")
+                #tea_table_string = "♫ ♪ Feliz, feliz no cumpleaños! ♩ ♫ ♪\n ♫ ♪ Feliz, feliz no cumpleaños te dooyy ♩ a tuu ♫ ♪ !"
+                #canvas_red_queen_image.create_text(370, 370, text=tea_table_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+
+                #Boton Siguiente---------------------------------------------------------------------------------------------
+                next_button = tkinter.Button(red_queen_screen, image=next_arrow_image, borderwidth=0, command=queen)
+                next_button_window = canvas_red_queen_image.create_window(590,455, anchor="nw", window=next_button)
+
+        def queen():
+                canvas_red_queen_image.create_image(0,0, image= queen1_screen_image, anchor="nw")
+                
+                #Imprimir dialogo en pantalla--------------------------------------------------------------------------------------
+                canvas_red_queen_image.create_image(0,0, image=dialogue_image, anchor="nw")
+                tea_table2_string = "¿Y quien es esto? ¿Cómo osas caminar por mis jardines llevnado \nblanco en lugar de carmín? ... Jugarás con migo\n TODOS EN ORDEN! OBEDEZCAN A SU REINA! EN ORDEN! "
+                canvas_red_queen_image.create_text(370, 370, text=tea_table2_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+
+                #Boton Siguiente---------------------------------------------------------------------------------------------
+                next_button = tkinter.Button(red_queen_screen, image=next_arrow_image, borderwidth=0, command=queen_cards)
+                next_button_window = canvas_red_queen_image.create_window(590,455, anchor="nw", window=next_button)
+
+        def queen_cards():
+                canvas_red_queen_image.create_image(0,0, image= queen_cards_screen_image, anchor="nw")
+                
+                #Imprimir dialogo en pantalla--------------------------------------------------------------------------------------
+                canvas_red_queen_image.create_image(0,0, image=dialogue_image, anchor="nw")
+                tea_table2_string = "Eeeen orden! Son las ordenes de la Reina! \n Se jugará BLACKJACK de la realeza!"
+                canvas_red_queen_image.create_text(370, 370, text=tea_table2_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+                
+                #Boton Siguiente---------------------------------------------------------------------------------------------
+                next_button = tkinter.Button(red_queen_screen, image=next_arrow_image, borderwidth=0, command=queen1)
+                next_button_window = canvas_red_queen_image.create_window(590,455, anchor="nw", window=next_button)
+
+        def queen1():
+                canvas_red_queen_image.create_image(0,0, image= queen1_screen_image, anchor="nw")
+                
+                #Imprimir dialogo en pantalla---------------------------------------------------------------------------------------------------
+                canvas_red_queen_image.create_image(0,0, image=dialogue_image, anchor="nw")
+                tea_table2_string = "Jugarás un juego conmigo! Si me ganas, bueno, eso no ha pasado \nnunca... y si no, ordenare tu destierro!"
+                canvas_red_queen_image.create_text(370, 370, text=tea_table2_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+
+                #Boton Siguiente-----------------------------------------------------------------------------------------------------------------
+                next_button = tkinter.Button(red_queen_screen, image=next_arrow_image, borderwidth=0, command=blackjack)
+                next_button_window = canvas_red_queen_image.create_window(590,455, anchor="nw", window=next_button)
+
+        #Boton Siguiente hatman() (Principal)-----------------------------------------------------------------------------------------------------------
+        next_button = tkinter.Button(red_queen_screen, image=next_arrow_image, borderwidth=0, command=queen_gate)
+        next_button_window = canvas_red_queen_image.create_window(590,455, anchor="nw", window=next_button)
+
+#Capitulo de juego final
+#Creacion de clase Carta (Card) 
 class Card:
         def __init__(self, image, value):
                 self.image = image
                 self.value = value
 
-#Capitulo de juego final
 def blackjack():
         #Creacion de pantalla
         blackjack_screen = LabelFrame(window, width=712, height=540)
@@ -693,13 +762,13 @@ def blackjack():
                         cards.remove(selectedCard)
                         #Muestra de la primer carta
                         selectedCard_Label =tkinter.Label(image = selectedCards[0].image)
-                        selectedCard_Label.place(x=50, y=100)
+                        selectedCard_Label.place(x=170, y=100)
                         #Espera 2 segundos
                         #time.sleep(2)
                         #Chequeo de Ases
                         if (selectedCard.value == 1):
                                 blackjack_choose1or11_string = "¿Quieres contarla como 1 o como 11? "
-                                canvas_final_game.create_text(330, 400, text=blackjack_choose1or11_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+                                canvas_final_game.create_text(315, 400, text=blackjack_choose1or11_string, font=("Calibri", 17, "bold"), fill="#1b2538")
                                 choose1or11(final_game_screen, canvas_final_game, card="first")
                         
                         else:
@@ -732,16 +801,16 @@ def blackjack():
                         cards.remove(selectedCard)
                         #Muestra de la primer carta
                         selectedCard_Label =tkinter.Label(image = selectedCards[0].image)
-                        selectedCard_Label.place(x=50, y=100)
+                        selectedCard_Label.place(x=170, y=100)
                         #Muestra de la segunda carta
                         selectedCard_Label =tkinter.Label(image = selectedCards[1].image)
-                        selectedCard_Label.place(x=150, y=100)
+                        selectedCard_Label.place(x=300, y=100)
                         #Espera 2 segundos
                         #time.sleep(2)
                         #Chequeo de Ases
                         if (selectedCard.value == 1):
-                                blackjack_choose1or11_string = "Quieres contarla como 1 o como 11? "
-                                canvas_final_game.create_text(400, 400, text=blackjack_choose1or11_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+                                blackjack_choose1or11_string = "¿Quieres contarla como 1 o como 11? "
+                                canvas_final_game.create_text(315, 400, text=blackjack_choose1or11_string, font=("Calibri", 17, "bold"), fill="#1b2538")
                                 choose1or11(final_game_screen, canvas_final_game, card="second")
                         
                         else:
@@ -775,19 +844,19 @@ def blackjack():
                         cards.remove(selectedCard)
                         #Muestra de la primer carta
                         selectedCard_Label =tkinter.Label(image = selectedCards[0].image)
-                        selectedCard_Label.place(x=50, y=100)
+                        selectedCard_Label.place(x=170, y=100)
                         #Muestra de la segunda carta
                         selectedCard_Label =tkinter.Label(image = selectedCards[1].image)
-                        selectedCard_Label.place(x=150, y=100)
+                        selectedCard_Label.place(x=300, y=100)
                         #Muestra de la tercer carta
                         selectedCard_Label =tkinter.Label(image = selectedCards[2].image)
-                        selectedCard_Label.place(x=250, y=100)
+                        selectedCard_Label.place(x=430, y=100)
                         #Espera 2 segundos
                         #time.sleep(2)
                         #Chequeo de Ases
                         if (selectedCard.value == 1):
                                 blackjack_choose1or11_string = "Quieres contarla como 1 o como 11? "
-                                canvas_final_game.create_text(400, 400, text=blackjack_choose1or11_string, font=("Calibri", 17, "bold"), fill="#1b2538")
+                                canvas_final_game.create_text(315, 400, text=blackjack_choose1or11_string, font=("Calibri", 17, "bold"), fill="#1b2538")
                                 choose1or11(final_game_screen, canvas_final_game,card="third")
                         
                         else:
@@ -808,7 +877,7 @@ def blackjack():
                         aliceFinalScore = 0
                         redQueenFinalScore = 0
                         redQueenCardsPlayed = 0
-                        xDisplayCoordinate = 50
+                        xDisplayCoordinate = 170
 
                         #Creacion de pantalla
                         redQueen_game_screen = LabelFrame(window, width=712, height=540)
@@ -825,7 +894,7 @@ def blackjack():
                                 redQueenFinalScore += selectedCard.value
                                 selectedCard_Label =tkinter.Label(image = selectedCard.image)
                                 selectedCard_Label.place(x=xDisplayCoordinate, y=100)
-                                xDisplayCoordinate += 100
+                                xDisplayCoordinate += 130
                                 redQueenCardsPlayed += 1
                                 cards.remove(selectedCard)
                         
@@ -917,24 +986,40 @@ next_arrow_image = ImageTk.PhotoImage(Image.open("Images/next_arrow.png"))
 red_path_screen_image = ImageTk.PhotoImage(Image.open("Images/red_path.png"))
 golden_gate_screen_image = ImageTk.PhotoImage(Image.open("Images/golden_gate.png"))
 not_golden_gate_screen_image = ImageTk.PhotoImage(Image.open("Images/not_golden_gate.png"))
+
+#Caterpillar------------------------------------------------------------------------------------------------------------
 alice_caterpillar_screen_image = ImageTk.PhotoImage(Image.open("Images/alice_caterpillar.png"))
 caterpillar_screen_image = ImageTk.PhotoImage(Image.open("Images/caterpillar.png"))
 caterpillar1_screen_image = ImageTk.PhotoImage(Image.open("Images/caterpillar1.png"))
 caterpillar_game_screen_image = ImageTk.PhotoImage(Image.open("Images/caterpillar_game.png"))
+
+#Cheshire Cat-----------------------------------------------------------------------------------------------------------
 cat_encounter_screen_image = ImageTk.PhotoImage(Image.open("Images/cat_encounter.png"))
 cheshire_cat_screen_image = ImageTk.PhotoImage(Image.open("Images/cheshire_cat.png"))
 cat_and_alice_screen_image = ImageTk.PhotoImage(Image.open("Images/cat_and_alice.png"))
 cat_path_screen_image = ImageTk.PhotoImage(Image.open("Images/cat_path.png"))
+
+#Hatman-----------------------------------------------------------------------------------------------------------------
 tea_table_screen_image = ImageTk.PhotoImage(Image.open("Images/tea_table.png"))
 hatman_encounter_screen_image = ImageTk.PhotoImage(Image.open("Images/hatman_encounter.png"))
+alice_tea_table_screen_image = ImageTk.PhotoImage(Image.open("Images/alice_tea_table.png"))
+hatman_tea_table_screen_image = ImageTk.PhotoImage(Image.open("Images/hatman_tea_table.png"))
+
 hatman_screen_image = ImageTk.PhotoImage(Image.open("Images/hatman.png"))
 unbirthday_screen_image = ImageTk.PhotoImage(Image.open("Images/unbirthday.png"))
+
+#Red Queen--------------------------------------------------------------------------------------------------------------
+labyrinth_screen_image = ImageTk.PhotoImage(Image.open("Images/labyrinth.png"))
+queen_gate_screen_image = ImageTk.PhotoImage(Image.open("Images/queen_gate.png"))
+queen1_screen_image = ImageTk.PhotoImage(Image.open("Images/queen1.png"))
+queen_cards_screen_image = ImageTk.PhotoImage(Image.open("Images/queen_cards.png"))
 queen_screen_image = ImageTk.PhotoImage(Image.open("Images/queen.png"))
 queen_red_screen_image = ImageTk.PhotoImage(Image.open("Images/queen_red.png"))
+
+#Endings---------------------------------------------------------------------------------------------------------------
 out_screen_image = ImageTk.PhotoImage(Image.open("Images/out.png"))
 win_screen_image = ImageTk.PhotoImage(Image.open("Images/win.png"))
 loose_screen_image = ImageTk.PhotoImage(Image.open("Images/loose.png"))
-
 
 #Cartas----------------------------------------------------------------------------------------------------------------
 Aheart_image = ImageTk.PhotoImage(Image.open("Images/Cards/Aheart.png"))
