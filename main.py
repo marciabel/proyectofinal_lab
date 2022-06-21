@@ -42,6 +42,7 @@ def welcome():
 
 #Ver Instrucciones-----------------------------------------------------------------------------------------------------------
 def open_how_to():
+        #Construcción de pantalla---------------------------------------------------------------------
         instructions_screen = LabelFrame(window, width=712, height=540)
         instructions_screen.place(x=0, y=0, relheight=1, relwidth=1)
         
@@ -51,7 +52,7 @@ def open_how_to():
 
         instructions_txt = open("Other/how-to.txt", "r")        
 
-        #Imprimir instrucciones en pantalla------------------------------------------------------------
+        #Imprimir instrucciones en pantalla (recuperadas "how-to.txt")---------------------------------
         canvas_instructions_image.create_text(230, 325, text=instructions_txt.read(), font=("Gabriola", 20),fill="black")
         
         #Boton-----------------------------------------------------------------------------------------
@@ -96,11 +97,12 @@ def woods():
         woods_string = "Donde me encuentro? He de pensar en cómo voy a arreglármelas \npara salir de aqui. Debo volver con mi madre antes de que \nanochezca...Pero, que es eso que veo ahi?"
         canvas_woods_image.create_text(370, 370, text=woods_string, font=("Calibri", 17, "bold"), fill="#1b2538")
                 
-        #Botones
+        #Boton siguiente---------------------------------------------------------------------------
         next_button = tkinter.Button(woods_screen, image=next_arrow_image, borderwidth=0, command=red_path)
         next_button_window = canvas_woods_image.create_window(590,455, anchor="nw", window=next_button)
 
 def woods2(scene= None):
+        "'caterpillar' or 'cheshire_cat' or 'hatman'"        
         #Creación pantalla---------------------------------------------------------------------------------------------------
         woods2_screen = LabelFrame(window, width=712, height=540)
         woods2_screen.place(x=0, y=0, relheight=1, relwidth=1)
@@ -113,12 +115,18 @@ def woods2(scene= None):
         if scene == "caterpillar":
                 next_button = tkinter.Button(woods2_screen, image=next_arrow_image, borderwidth=0, command=caterpillar)
                 next_button_window = canvas_woods2_image.create_window(590,455, anchor="nw", window=next_button)
+        
+        #Bosque que guia al Gato de Cheshire -----------------------------------------------------------------------------------
         elif scene == "cheshire_cat":
                 next_button = tkinter.Button(woods2_screen, image=next_arrow_image, borderwidth=0, command=cheshire_cat)
                 next_button_window = canvas_woods2_image.create_window(590,455, anchor="nw", window=next_button)
+        
+        #Bosque que guia al Sombrerero-----------------------------------------------------------------------------------------
         elif scene == "hatman":
                 next_button = tkinter.Button(woods2_screen, image=next_arrow_image, borderwidth=0, command=hatman)
                 next_button_window = canvas_woods2_image.create_window(590,455, anchor="nw", window=next_button)
+        
+        #En caso de que se haya pasado el comando incorrecto---------------------------------------------------------------------
         else:
                 print("Woods2 Comando Incorrecto")
 
@@ -159,11 +167,12 @@ def golden_gate():
         golden_gate_string = "Bienvenida querida! Soy tu amigo El Picaporte. Mi cerradura es \nimpasable,a menos que cuentes con la Llave Dorada..."
         canvas_golden_gate_image.create_text(370, 370, text=golden_gate_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
-        #Boton 1  (Usar la llave)-----------------------------------------------------------------------------------------
+        #Boton  (Usar la llave)-----------------------------------------------------------------------------------------
         key_button = tkinter.Button(golden_gate_screen, text = "Usar la llave", font=("Gabriola",18, "bold"), padx=22,bg ="#b6e2d3", fg= "#b74153", command=check_key)
         key_button_window = canvas_golden_gate_image.create_window(270,450, anchor="nw", window=key_button)
 
 def check_key():
+        #Construccion de pantalla --------------------------------------------------------------------------------------------------------------------
         golden_gate_screen = LabelFrame(window, width=712, height=540)
         golden_gate_screen.place(x=0, y=0, relheight=1, relwidth=1)
         canvas_golden_gate_image = tkinter.Canvas(golden_gate_screen, width = 712, height=540)
@@ -182,9 +191,9 @@ def check_key():
                 continue_button_window = canvas_golden_gate_image.create_window(240,450, anchor="nw", window=continue_button)
         else: 
                 canvas_golden_gate_image.create_image(0,0, image= golden_gate_screen_image, anchor="nw")
-                canvas_golden_gate_image.create_image(0,0, image= dialogue_image, anchor="nw")
 
                 #Imprimir dialogo en pantalla------------------------------------------------------------
+                canvas_golden_gate_image.create_image(0,0, image= dialogue_image, anchor="nw")
                 golden_gate_string = "Te lo dije! Nada es imposible si lo deseas lo suficiente...\nY tienes una llave para pasar. Ten mucho cuidado alli adentro \npequeña, a la Reina le gusta Cortar Cabezas..."
                 canvas_golden_gate_image.create_text(350, 370, text=golden_gate_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
@@ -216,7 +225,7 @@ def caterpillar():
                 caterpillar_string = "¿Qué es eso que ven mis ojos? Una oruga cantando? \nSe ve muy amigable, quizás pueda ayudarme a encontrar la \nLlave dorada..."
                 canvas_caterpillar_image.create_text(370, 370, text=caterpillar_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
-                #Boton 1  (Acercarte)-----------------------------------------------------------------------------------------
+                #Boton   (Acercarte)-----------------------------------------------------------------------------------------
                 back_button = tkinter.Button(caterpillar_screen, text = "Acercarte", font=("Gabriola",18, "bold"), padx=100,bg ="#b6e2d3", fg= "#b74153", command = caterpillar_game)
                 back_button_window = canvas_caterpillar_image.create_window(230,450, anchor="nw", window=back_button)
 
@@ -225,6 +234,7 @@ def caterpillar():
         next_button_window = canvas_alice_caterpillar_image.create_window(590,455, anchor="nw", window=next_button)
 
 def caterpillar_game():
+        #Creacion Pantalla-------------------------------------------------------------------------------------------------------
         caterpillar1_screen = LabelFrame(window, width=712, height=540)
         caterpillar1_screen.place(x=0, y=0, relheight=1, relwidth=1)
         
@@ -238,7 +248,7 @@ def caterpillar_game():
         canvas_caterpillar1_image.create_text(370, 370, text=caterpillar1_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
         def command_aux(question, score):
-
+                "question number, score given for said question"
                 if question == 1:
                         caterpillar_score.append(score)
                         second_question()
@@ -248,11 +258,13 @@ def caterpillar_game():
                 elif question == 3:
                         caterpillar_score.append(score)
                         print (caterpillar_score) #Para chequear que se agreguen correctamente
-                        result_caterpillar(caterpillar_score)
+                        result_caterpillar(caterpillar_score) 
 
         def result_caterpillar(caterpillar_score_list):
+                "caterpillar_score_list: list that contains the scores for the caterpillar game"
                 total_score = 0
 
+                #Resultado final respuestas Oruga. 
                 for i in caterpillar_score_list:
                         total_score += i
         
@@ -265,7 +277,7 @@ def caterpillar_game():
         '''RESULTADOS DEL ENCUENTRO CON LA ORUGA'''
         # --> En el caso que el resultado sumado de las preguntas sea > 6, se obtendra la llave. 
         def caterpillar_win():
-                #Construccion pantalla
+                #Construccion pantalla-----------------------------------------------------------------------------------------------
                 caterpillar_win_screen = LabelFrame(window, width=712, height=540)
                 caterpillar_win_screen.place(x=0, y=0, relheight=1, relwidth=1)
                 
@@ -284,7 +296,7 @@ def caterpillar_game():
 
         # --> En el caso que el resultado sumado de las preguntas sea < 6, pierde contra la oruga. Vuelta al bosque.  
         def caterpillar_loose():
-                #Construccion pantalla
+                #Construccion pantalla-----------------------------------------------------------------------------------------------
                 caterpillar_loose_screen = LabelFrame(window, width=712, height=540)
                 caterpillar_loose_screen.place(x=0, y=0, relheight=1, relwidth=1)
                 
@@ -439,6 +451,7 @@ def cheshire_cat_game():
         canvas_cheshire_cat_game_image.create_text(370, 370, text=cheshire_cat_game_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
         def result_cheshire_cat_game(answer):
+                #Creacion de pantalla-----------------------------------------------------------------------------------
                 cheshire_cat_game_screen = LabelFrame(window, width=712, height=540)
                 cheshire_cat_game_screen.place(x=0, y=0, relheight=1, relwidth=1)
                         
@@ -763,8 +776,7 @@ def blackjack():
                         #Muestra de la primer carta
                         selectedCard_Label =tkinter.Label(image = selectedCards[0].image)
                         selectedCard_Label.place(x=170, y=100)
-                        #Espera 2 segundos
-                        #time.sleep(2)
+
                         #Chequeo de Ases
                         if (selectedCard.value == 1):
                                 blackjack_choose1or11_string = "¿Quieres contarla como 1 o como 11? "
@@ -773,8 +785,7 @@ def blackjack():
                         
                         else:
                                 addScore(10)
-                        #Espera 1 segundo
-                        #time.sleep(1)
+
                         #Muestra el puntaje
                         showScore(final_game_screen, canvas_final_game)
 
@@ -805,8 +816,7 @@ def blackjack():
                         #Muestra de la segunda carta
                         selectedCard_Label =tkinter.Label(image = selectedCards[1].image)
                         selectedCard_Label.place(x=300, y=100)
-                        #Espera 2 segundos
-                        #time.sleep(2)
+
                         #Chequeo de Ases
                         if (selectedCard.value == 1):
                                 blackjack_choose1or11_string = "¿Quieres contarla como 1 o como 11? "
@@ -815,8 +825,7 @@ def blackjack():
                         
                         else:
                                 addScore(10)
-                        #Espera 1 segundo
-                        #time.sleep(1)
+
                         #Muestra el puntaje
                         showScore(final_game_screen, canvas_final_game)
                         #Chequear si perdió o no
@@ -851,8 +860,7 @@ def blackjack():
                         #Muestra de la tercer carta
                         selectedCard_Label =tkinter.Label(image = selectedCards[2].image)
                         selectedCard_Label.place(x=430, y=100)
-                        #Espera 2 segundos
-                        #time.sleep(2)
+
                         #Chequeo de Ases
                         if (selectedCard.value == 1):
                                 blackjack_choose1or11_string = "Quieres contarla como 1 o como 11? "
@@ -861,13 +869,10 @@ def blackjack():
                         
                         else:
                                 addScore(10)
-                        #Espera 1 segundo
-                        #time.sleep(1)
+
                         #Muestra el puntaje
                         showScore(final_game_screen, canvas_final_game)
                         
-                        #Chequear si perdió o no
-
                         #Boton Siguiente-----------------------------------------------------------------------------------------------------------
                         next_button = tkinter.Button(final_game_screen, image=next_arrow_image, borderwidth=0, command=redqueen)
                         next_button_window = canvas_final_game.create_window(590,455, anchor="nw", window=next_button)
@@ -889,6 +894,7 @@ def blackjack():
 
                         for i in aliceScore:
                                 aliceFinalScore += i
+
                         while (aliceFinalScore > redQueenFinalScore) and (redQueenCardsPlayed < 3):
                                 selectedCard = cards[random.randint(0, len(cards) - 1)]
                                 redQueenFinalScore += selectedCard.value
@@ -903,6 +909,7 @@ def blackjack():
                         showScore_string = (f"El puntaje de la Reina Roja es {redQueenFinalScore}")
                         canvas_redQueen_game_screen.create_text(370,350, text=showScore_string, font=("Calibri", 17, "bold"), fill="#1b2538")
                         print(redQueenFinalScore) #Para comprobar que se sumen correctamente los valores
+
                         time.sleep(2.0)
                         if (aliceFinalScore > redQueenFinalScore):
                                 #Boton Siguiente-----------------------------------------------------------------------------------------------------------
@@ -918,13 +925,13 @@ def blackjack():
 
                 first_card()
                         
-        
         #Boton de aceptar y comenzar el juego
         play_button = tkinter.Button(blackjack_screen, text = "Jugar", font=("Gabriola",20, "bold"),bg ="#b6e2d3", fg= "#b74153", padx=100, command = final_game)
         play_button_window = canvas_blackjack.create_window(220,450, anchor="nw", window=play_button)
         
 #Finales-------------------------------------------------------------------------------------------------------------------------------
 def ending(outcome):
+        "outcome =\n 'out' if Alice gets kicked out of the world || 'win' in case of victory in the blackjack game || ''lose' in case of defeat in the blackjack game"
         #Construccion de la pantalla
         ending_screen = LabelFrame(window, width=712, height=540)
         ending_screen.place(x=0, y=0, relheight=1, relwidth=1)
@@ -936,7 +943,7 @@ def ending(outcome):
                 #-----------Imagen pantalla-----------------------------------------------------------------------------------------------------
                 canvas_ending_image.create_image(0,0, image=out_screen_image, anchor="nw")
                 
-                 #----------Texto de Bienvenida-------------------------------------------------------------------------------------------------------
+                 #----------Texto-------------------------------------------------------------------------------------------------------
                 canvas_ending_image.create_text(356, 100, text="Vuelta al mundo real... \nMejor suerte la próxima!", font=("Gabriola", 30, "bold"),fill="white")
 
                 #-----------Boton (Volver al menu principal)-----------------------------------------------------------------------------------------
@@ -947,7 +954,7 @@ def ending(outcome):
                 #-----------Imagen pantalla-----------------------------------------------------------------------------------------------------
                 canvas_ending_image.create_image(0,0, image=win_screen_image, anchor="nw")
                                 
-                #----------Texto de Bienvenida-------------------------------------------------------------------------------------------------------
+                #----------Texto-------------------------------------------------------------------------------------------------------
                 canvas_ending_image.create_text(356, 320, text="Has vencido a la Reina Roja y ganado el juego! \nAhora todo el universo te pertenece... O algo asi", font=("Gabriola", 30, "bold"),fill="white")
 
                 #Boton (Volver al menu principal))-----------------------------------------------------------------------------------------
@@ -958,7 +965,7 @@ def ending(outcome):
                 #-----------Imagen pantalla-----------------------------------------------------------------------------------------------------
                 canvas_ending_image.create_image(0,0, image=loose_screen_image, anchor="nw")
                                 
-                #----------Texto de Bienvenida-------------------------------------------------------------------------------------------------------
+                #----------Texto-------------------------------------------------------------------------------------------------------
                 canvas_ending_image.create_text(356, 205, text="Has perdido contra la Reina Roja, que pena! \n        Pero... era todo un sueño?", font=("Gabriola", 30, "bold"),fill="white")
 
                 #Boton (Volver al menu principal))-----------------------------------------------------------------------------------------
