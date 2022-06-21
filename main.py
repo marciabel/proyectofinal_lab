@@ -573,7 +573,7 @@ def hatman():
                 
                 #Imprimir dialogo en pantalla--------------------------------------------------------------------------------------
                 canvas_hatman_encounter_image.create_image(0,0, image=dialogue_image, anchor="nw")
-                tea_table2_string = "No querida! Esto no es un no cumpleaños! \n Por que festejar sólo un día de cumpleaños cuando podemos \nfestejar 364 días de no cumpleaños! ... ¿Que hay de ti?"
+                tea_table2_string = "No querida! Esto es un no cumpleaños! \n Por que festejar sólo un día de cumpleaños cuando podemos \nfestejar 364 días de no cumpleaños! ... ¿Que hay de ti?"
                 canvas_hatman_encounter_image.create_text(370, 370, text=tea_table2_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
                 #Boton 1 (También es mi no cumpleaños!)-----------------------------------------------------------------------------------------
@@ -585,6 +585,13 @@ def hatman():
                 birthday_button_window = canvas_hatman_encounter_image.create_window(400,450, anchor="nw", window=birthday_button)
 
         def birthday():
+                #Construir pantalla -----------------------------------------------------------------------------------------------------------
+                hatman_encounter_screen = LabelFrame(window, width=712, height=540)
+                hatman_encounter_screen.place(x=0, y=0, relheight=1, relwidth=1)
+                
+                canvas_hatman_encounter_image = tkinter.Canvas(hatman_encounter_screen, width = 712, height=540)
+                canvas_hatman_encounter_image.pack(fill="both", expand=True)
+
                 canvas_hatman_encounter_image.create_image(0,0, image= hatman_tea_table_screen_image, anchor="nw")
                 
                 #Imprimir dialogo en pantalla---------------------------------------------------------------------------------------------------
@@ -663,7 +670,7 @@ def red_queen():
                 
                 #Imprimir dialogo en pantalla--------------------------------------------------------------------------------------
                 canvas_red_queen_image.create_image(0,0, image=dialogue_image, anchor="nw")
-                tea_table2_string = "¿Y quien es esto? ¿Cómo osas caminar por mis jardines llevnado \nblanco en lugar de carmín? ... Jugarás con migo\n TODOS EN ORDEN! OBEDEZCAN A SU REINA! EN ORDEN! "
+                tea_table2_string = "¿Y quien es esto? ¿Cómo osas caminar por mis jardines llevando \nblanco en lugar de carmín? ... Jugarás conmigo\n TODOS EN ORDEN! OBEDEZCAN A SU REINA! EN ORDEN! "
                 canvas_red_queen_image.create_text(370, 370, text=tea_table2_string, font=("Calibri", 17, "bold"), fill="#1b2538")
 
                 #Boton Siguiente---------------------------------------------------------------------------------------------
